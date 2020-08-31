@@ -35,10 +35,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.mainChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gbCube = new System.Windows.Forms.GroupBox();
+            this.rbAdditionalcube = new System.Windows.Forms.RadioButton();
             this.pbCubeImage = new System.Windows.Forms.PictureBox();
             this.rbBlackcube = new System.Windows.Forms.RadioButton();
             this.rbRedcube = new System.Windows.Forms.RadioButton();
             this.gbUp = new System.Windows.Forms.GroupBox();
+            this.rbRaretoEpic = new System.Windows.Forms.RadioButton();
             this.rbUniquetoLegendary = new System.Windows.Forms.RadioButton();
             this.rbEpictoUnique = new System.Windows.Forms.RadioButton();
             this.gbCost = new System.Windows.Forms.GroupBox();
@@ -100,22 +102,35 @@
             // 
             // gbCube
             // 
+            this.gbCube.Controls.Add(this.rbAdditionalcube);
             this.gbCube.Controls.Add(this.pbCubeImage);
             this.gbCube.Controls.Add(this.rbBlackcube);
             this.gbCube.Controls.Add(this.rbRedcube);
             this.gbCube.Location = new System.Drawing.Point(584, 14);
             this.gbCube.Name = "gbCube";
-            this.gbCube.Size = new System.Drawing.Size(303, 85);
+            this.gbCube.Size = new System.Drawing.Size(303, 108);
             this.gbCube.TabIndex = 1;
             this.gbCube.TabStop = false;
             this.gbCube.Text = "큐브 종류";
             // 
+            // rbAdditionalcube
+            // 
+            this.rbAdditionalcube.AutoSize = true;
+            this.rbAdditionalcube.Location = new System.Drawing.Point(7, 83);
+            this.rbAdditionalcube.Name = "rbAdditionalcube";
+            this.rbAdditionalcube.Size = new System.Drawing.Size(110, 21);
+            this.rbAdditionalcube.TabIndex = 3;
+            this.rbAdditionalcube.TabStop = true;
+            this.rbAdditionalcube.Text = "에디셔널 큐브";
+            this.rbAdditionalcube.UseVisualStyleBackColor = true;
+            this.rbAdditionalcube.Click += new System.EventHandler(this.rbAdditionalcube_Click);
+            // 
             // pbCubeImage
             // 
             this.pbCubeImage.Image = global::CubeSimulator.Properties.Resources.redcube;
-            this.pbCubeImage.Location = new System.Drawing.Point(132, 14);
+            this.pbCubeImage.Location = new System.Drawing.Point(143, 15);
             this.pbCubeImage.Name = "pbCubeImage";
-            this.pbCubeImage.Size = new System.Drawing.Size(65, 63);
+            this.pbCubeImage.Size = new System.Drawing.Size(87, 87);
             this.pbCubeImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbCubeImage.TabIndex = 2;
             this.pbCubeImage.TabStop = false;
@@ -146,19 +161,33 @@
             // 
             // gbUp
             // 
+            this.gbUp.Controls.Add(this.rbRaretoEpic);
             this.gbUp.Controls.Add(this.rbUniquetoLegendary);
             this.gbUp.Controls.Add(this.rbEpictoUnique);
-            this.gbUp.Location = new System.Drawing.Point(584, 105);
+            this.gbUp.Location = new System.Drawing.Point(585, 128);
             this.gbUp.Name = "gbUp";
-            this.gbUp.Size = new System.Drawing.Size(303, 86);
+            this.gbUp.Size = new System.Drawing.Size(303, 102);
             this.gbUp.TabIndex = 2;
             this.gbUp.TabStop = false;
             this.gbUp.Text = "등업단계";
             // 
+            // rbRaretoEpic
+            // 
+            this.rbRaretoEpic.AutoSize = true;
+            this.rbRaretoEpic.Checked = true;
+            this.rbRaretoEpic.Location = new System.Drawing.Point(6, 24);
+            this.rbRaretoEpic.Name = "rbRaretoEpic";
+            this.rbRaretoEpic.Size = new System.Drawing.Size(94, 21);
+            this.rbRaretoEpic.TabIndex = 2;
+            this.rbRaretoEpic.TabStop = true;
+            this.rbRaretoEpic.Text = "레어 > 에픽";
+            this.rbRaretoEpic.UseVisualStyleBackColor = true;
+            this.rbRaretoEpic.Click += new System.EventHandler(this.rbRaretoEpic_Click);
+            // 
             // rbUniquetoLegendary
             // 
             this.rbUniquetoLegendary.AutoSize = true;
-            this.rbUniquetoLegendary.Location = new System.Drawing.Point(7, 56);
+            this.rbUniquetoLegendary.Location = new System.Drawing.Point(6, 78);
             this.rbUniquetoLegendary.Name = "rbUniquetoLegendary";
             this.rbUniquetoLegendary.Size = new System.Drawing.Size(133, 21);
             this.rbUniquetoLegendary.TabIndex = 1;
@@ -169,12 +198,10 @@
             // rbEpictoUnique
             // 
             this.rbEpictoUnique.AutoSize = true;
-            this.rbEpictoUnique.Checked = true;
-            this.rbEpictoUnique.Location = new System.Drawing.Point(7, 27);
+            this.rbEpictoUnique.Location = new System.Drawing.Point(6, 51);
             this.rbEpictoUnique.Name = "rbEpictoUnique";
             this.rbEpictoUnique.Size = new System.Drawing.Size(107, 21);
             this.rbEpictoUnique.TabIndex = 0;
-            this.rbEpictoUnique.TabStop = true;
             this.rbEpictoUnique.Text = "에픽 > 유니크";
             this.rbEpictoUnique.UseVisualStyleBackColor = true;
             this.rbEpictoUnique.Click += new System.EventHandler(this.rbEpictoUnique_Click);
@@ -187,7 +214,7 @@
             this.gbCost.Controls.Add(this.rbCostDoublesix);
             this.gbCost.Controls.Add(this.rbCostSix);
             this.gbCost.Controls.Add(this.rbCostSingle);
-            this.gbCost.Location = new System.Drawing.Point(584, 198);
+            this.gbCost.Location = new System.Drawing.Point(585, 236);
             this.gbCost.Name = "gbCost";
             this.gbCost.Size = new System.Drawing.Size(303, 155);
             this.gbCost.TabIndex = 3;
@@ -269,7 +296,7 @@
             // 
             this.gbMiracle.Controls.Add(this.rbMiracleDisable);
             this.gbMiracle.Controls.Add(this.rbMiracleEnable);
-            this.gbMiracle.Location = new System.Drawing.Point(584, 360);
+            this.gbMiracle.Location = new System.Drawing.Point(584, 397);
             this.gbMiracle.Name = "gbMiracle";
             this.gbMiracle.Size = new System.Drawing.Size(303, 83);
             this.gbMiracle.TabIndex = 4;
@@ -318,7 +345,7 @@
             this.lbUp.Name = "lbUp";
             this.lbUp.Size = new System.Drawing.Size(377, 26);
             this.lbUp.TabIndex = 7;
-            this.lbUp.Text = "개 안에 에픽에서 유니크로 등업할 확률은";
+            this.lbUp.Text = "개 안에 레어에서 에픽으로 등업할 확률은";
             // 
             // lbCubeName
             // 
@@ -372,7 +399,6 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "큐브 확률 계산기";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mainChart)).EndInit();
             this.gbCube.ResumeLayout(false);
             this.gbCube.PerformLayout();
@@ -413,6 +439,8 @@
         private System.Windows.Forms.Label lbCubeName;
         private System.Windows.Forms.Label lbProbability;
         private System.Windows.Forms.Label lbCost;
+        private System.Windows.Forms.RadioButton rbAdditionalcube;
+        private System.Windows.Forms.RadioButton rbRaretoEpic;
     }
 }
 

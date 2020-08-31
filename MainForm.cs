@@ -8,6 +8,7 @@ namespace CubeSimulator
         public MainForm()
         {
             InitializeComponent();
+            DrawChart();
         }
 
         public double CalcP()
@@ -16,17 +17,30 @@ namespace CubeSimulator
 
             if (rbRedcube.Checked)
             {
-                if (rbEpictoUnique.Checked)
+                if (rbRaretoEpic.Checked)
+                    p = Data.pRedRtoE;
+                else if (rbEpictoUnique.Checked)
                     p = Data.pRedEtoU;
                 else if (rbUniquetoLegendary.Checked)
                     p = Data.pRedUtoL;
             }
             else if (rbBlackcube.Checked)
             {
-                if (rbEpictoUnique.Checked)
+                if (rbRaretoEpic.Checked)
+                    p = Data.pBlackRtoE;
+                else if (rbEpictoUnique.Checked)
                     p = Data.pBlackEtoU;
                 else if (rbUniquetoLegendary.Checked)
                     p = Data.pBlackUtoL;
+            }
+            else if (rbAdditionalcube.Checked)
+            {
+                if (rbRaretoEpic.Checked)
+                    p = Data.pAdditionalRtoE;
+                else if (rbEpictoUnique.Checked)
+                    p = Data.pAdditionalEtoU;
+                else if (rbUniquetoLegendary.Checked)
+                    p = Data.pAdditionalUtoL;
             }
 
             if (rbMiracleEnable.Checked)
@@ -86,6 +100,15 @@ namespace CubeSimulator
                     else if (rbCostDoublesix.Checked)
                         costone = Data.cBlackDoubleSix;
                 }
+                else if (rbAdditionalcube.Checked)
+                {
+                    if (rbCostSingle.Checked)
+                        costone = Data.cAdditionalSingle;
+                    else if (rbCostSix.Checked)
+                        costone = Data.cAdditionalSilver;
+                    else if (rbCostDoublesix.Checked)
+                        costone = Data.cAdditionalGold;
+                }
 
                 if (rbCostInput.Checked && cbWonandMeso.SelectedIndex == 1)
                     lbCost.Text = "비용: " + (count * costone) + "억 메소";
@@ -99,11 +122,6 @@ namespace CubeSimulator
                 else
                     lbCost.Text = "비용: ∞원";
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            DrawChart();
         }
 
         private void rbRedcube_Click(object sender, EventArgs e)
@@ -131,6 +149,27 @@ namespace CubeSimulator
             WriteCost();
             DrawChart();
         }
+
+        private void rbAdditionalcube_Click(object sender, EventArgs e)
+        {
+            rbCostSingle.Text = "1개당 2400원";
+            rbCostSix.Text = "5개당 9900원(1개당 1980원)";
+            rbCostDoublesix.Text = "10개당 18900원(1개당 1890원)";
+            lbCubeName.Text = "에디큐브";
+            pbCubeImage.Image = CubeSimulator.Properties.Resources.additionalcube;
+
+            WriteProbability();
+            WriteCost();
+            DrawChart();
+        }
+        private void rbRaretoEpic_Click(object sender, EventArgs e)
+        {
+            lbUp.Text = "개 안에 레어에서 에픽으로 등업할 확률은";
+
+            WriteProbability();
+            DrawChart();
+        }
+
         private void rbEpictoUnique_Click(object sender, EventArgs e)
         {
             lbUp.Text = "개 안에 에픽에서 유니크로 등업할 확률은";
